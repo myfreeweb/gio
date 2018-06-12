@@ -235,7 +235,7 @@ pub trait FileExt {
 
     fn set_display_name_async<'a, P: Into<Option<&'a Cancellable>>, Q: FnOnce(Result<File, Error>) + Send + 'static>(&self, display_name: &str, io_priority: glib::Priority, cancellable: P, callback: Q);
 
-    //fn start_mountable<'a, 'b, 'c, P: Into<Option<&'a MountOperation>>, Q: Into<Option<&'b Cancellable>>, R: Into<Option<&'c /*Unimplemented*/AsyncReadyCallback>>, S: Into<Option</*Unimplemented*/Fundamental: Pointer>>>(&self, flags: /*Ignored*/DriveStartFlags, start_operation: P, cancellable: Q, callback: R, user_data: S);
+    //fn start_mountable<'a, 'b, 'c, P: Into<Option<&'a MountOperation>>, Q: Into<Option<&'b Cancellable>>, R: Into<Option<&'c /*Unimplemented*/AsyncReadyCallback>>, S: Into<Option</*Unimplemented*/Fundamental: Pointer>>>(&self, flags: DriveStartFlags, start_operation: P, cancellable: Q, callback: R, user_data: S);
 
     //fn stop_mountable<'a, 'b, 'c, P: Into<Option<&'a MountOperation>>, Q: Into<Option<&'b Cancellable>>, R: Into<Option<&'c /*Unimplemented*/AsyncReadyCallback>>, S: Into<Option</*Unimplemented*/Fundamental: Pointer>>>(&self, flags: /*Ignored*/MountUnmountFlags, mount_operation: P, cancellable: Q, callback: R, user_data: S);
 
@@ -1006,7 +1006,7 @@ impl<O: IsA<File>> FileExt for O {
         }
     }
 
-    //fn start_mountable<'a, 'b, 'c, P: Into<Option<&'a MountOperation>>, Q: Into<Option<&'b Cancellable>>, R: Into<Option<&'c /*Unimplemented*/AsyncReadyCallback>>, S: Into<Option</*Unimplemented*/Fundamental: Pointer>>>(&self, flags: /*Ignored*/DriveStartFlags, start_operation: P, cancellable: Q, callback: R, user_data: S) {
+    //fn start_mountable<'a, 'b, 'c, P: Into<Option<&'a MountOperation>>, Q: Into<Option<&'b Cancellable>>, R: Into<Option<&'c /*Unimplemented*/AsyncReadyCallback>>, S: Into<Option</*Unimplemented*/Fundamental: Pointer>>>(&self, flags: DriveStartFlags, start_operation: P, cancellable: Q, callback: R, user_data: S) {
     //    unsafe { TODO: call ffi::g_file_start_mountable() }
     //}
 

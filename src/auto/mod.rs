@@ -38,6 +38,10 @@ mod cancellable;
 pub use self::cancellable::Cancellable;
 pub use self::cancellable::CancellableExt;
 
+mod converter;
+pub use self::converter::Converter;
+pub use self::converter::ConverterExt;
+
 mod data_input_stream;
 pub use self::data_input_stream::DataInputStream;
 pub use self::data_input_stream::DataInputStreamExt;
@@ -45,6 +49,25 @@ pub use self::data_input_stream::DataInputStreamExt;
 mod data_output_stream;
 pub use self::data_output_stream::DataOutputStream;
 pub use self::data_output_stream::DataOutputStreamExt;
+
+#[cfg(any(not(windows), feature = "dox"))]
+mod desktop_app_info;
+#[cfg(any(not(windows), feature = "dox"))]
+pub use self::desktop_app_info::DesktopAppInfo;
+#[cfg(any(not(windows), feature = "dox"))]
+pub use self::desktop_app_info::DesktopAppInfoExt;
+
+mod drive;
+pub use self::drive::Drive;
+pub use self::drive::DriveExt;
+
+mod emblem;
+pub use self::emblem::Emblem;
+pub use self::emblem::EmblemExt;
+
+mod emblemed_icon;
+pub use self::emblemed_icon::EmblemedIcon;
+pub use self::emblemed_icon::EmblemedIconExt;
 
 mod file;
 pub use self::file::File;
@@ -253,6 +276,18 @@ mod tls_server_connection;
 pub use self::tls_server_connection::TlsServerConnection;
 pub use self::tls_server_connection::TlsServerConnectionExt;
 
+mod volume;
+pub use self::volume::Volume;
+pub use self::volume::VolumeExt;
+
+mod zlib_compressor;
+pub use self::zlib_compressor::ZlibCompressor;
+pub use self::zlib_compressor::ZlibCompressorExt;
+
+mod zlib_decompressor;
+pub use self::zlib_decompressor::ZlibDecompressor;
+pub use self::zlib_decompressor::ZlibDecompressorExt;
+
 mod resource;
 pub use self::resource::Resource;
 
@@ -271,8 +306,11 @@ mod srv_target;
 pub use self::srv_target::SrvTarget;
 
 mod enums;
+pub use self::enums::ConverterResult;
 pub use self::enums::DataStreamByteOrder;
 pub use self::enums::DataStreamNewlineType;
+pub use self::enums::DriveStartStopType;
+pub use self::enums::EmblemOrigin;
 pub use self::enums::FileType;
 pub use self::enums::IOErrorEnum;
 pub use self::enums::MountOperationResult;
@@ -294,11 +332,14 @@ pub use self::enums::TlsCertificateRequestFlags;
 pub use self::enums::TlsDatabaseLookupFlags;
 pub use self::enums::TlsInteractionResult;
 pub use self::enums::TlsRehandshakeMode;
+pub use self::enums::ZlibCompressorFormat;
 
 mod flags;
 pub use self::flags::AppInfoCreateFlags;
 pub use self::flags::ApplicationFlags;
 pub use self::flags::AskPasswordFlags;
+pub use self::flags::ConverterFlags;
+pub use self::flags::DriveStartFlags;
 pub use self::flags::FileCreateFlags;
 pub use self::flags::FileQueryInfoFlags;
 pub use self::flags::IOStreamSpliceFlags;
@@ -435,8 +476,14 @@ pub mod traits {
     pub use super::BufferedInputStreamExt;
     pub use super::BufferedOutputStreamExt;
     pub use super::CancellableExt;
+    pub use super::ConverterExt;
     pub use super::DataInputStreamExt;
     pub use super::DataOutputStreamExt;
+    #[cfg(any(not(windows), feature = "dox"))]
+    pub use super::DesktopAppInfoExt;
+    pub use super::DriveExt;
+    pub use super::EmblemExt;
+    pub use super::EmblemedIconExt;
     pub use super::FileExt;
     pub use super::FileIOStreamExt;
     pub use super::FileInfoExt;
@@ -487,4 +534,7 @@ pub mod traits {
     pub use super::TlsInteractionExt;
     pub use super::TlsPasswordExt;
     pub use super::TlsServerConnectionExt;
+    pub use super::VolumeExt;
+    pub use super::ZlibCompressorExt;
+    pub use super::ZlibDecompressorExt;
 }
